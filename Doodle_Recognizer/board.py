@@ -18,6 +18,7 @@ class WhiteBoard:
         self.old_y = None
         self.old_x = None
         self.master = master
+        self.master.geometry(f"{WIDTH + 300}x{HEIGHT}")
         self.master.title("WhiteBoard")
         self.master.resizable(False, False)
 
@@ -27,7 +28,7 @@ class WhiteBoard:
         # Create canvas
         self.canvas = tk.Canvas(self.master, width=WIDTH, height=HEIGHT, bg="black")
         self.canvas.configure(bg="black")
-        self.canvas.pack()
+        self.canvas.pack(side="left", anchor="nw")
 
         # Create PIL canvas to use in parallel
         self.img_pil = Image.new("RGB", (WIDTH, HEIGHT), BLACK)
@@ -35,9 +36,31 @@ class WhiteBoard:
 
         # Create Buttons
         self.button_frame = ttk.Frame(self.master)
-        self.button_frame.pack(side="top", pady=10)
+        self.button_frame.pack(side="bottom", pady=10)
 
-        self.predictions_box = tk.Label()
+        # Create a frame to display predictions
+        self.predictions_frame = ttk.Frame(self.master)
+        self.predictions_frame.pack(side="left", padx=0, anchor="nw")
+
+        # Create labels for predictions
+        self.prediction_boxes = []
+
+        # Categories dictionary
+        self.pred_dict = {0: "Clock",
+                          1: "Boomerang",
+                          2: "Airplane",
+                          3: "Snail",
+                          4: "Parachute",
+                          5: "Tree",
+                          6: "Fish",
+                          7: "Diamond",
+                          8: "Helicopter",
+                          9: "T-Shirt"}
+
+        for i in range(10):
+            temp = tk.Label(self.predictions_frame, text=f"{self.pred_dict[i]}")
+            temp.pack(side="top", pady=0, anchor="nw")
+            self.prediction_boxes.append(self)
 
         # # Button configuration
         # button_config = {
@@ -100,26 +123,16 @@ class WhiteBoard:
 
     def predict(self):
 
-        pred_dict = {0: "Clock",
-                     1: "Boomerang",
-                     2: "Airplane",
-                     3: "Snail",
-                     4: "Parachute",
-                     5: "Tree",
-                     6: "Fish",
-                     7: "Diamond",
-                     8: "Helicopter",
-                     9: "T-Shirt"}
-
         np_img = preprocess_image()
         np_img = np_img.reshape(784)
         prediction, probabilities = make_prediction(np_img, convolutional=True)
 
-        print("Prediction: ", pred_dict[prediction.item()])
+        print("Prediction: ", self.pred_dict[prediction.item()])
         print("Probabilities: ", probabilities)
 
 
 if __name__ == "__main__":
+    print("Welcome to Doodle Recognizer!")
     setup(convolutional=True)
     root = tk.Tk()
     whiteboard = WhiteBoard(root)
