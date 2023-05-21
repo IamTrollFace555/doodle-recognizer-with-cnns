@@ -11,9 +11,12 @@ HEIGHT = 800
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 
+
 class WhiteBoard:
 
     def __init__(self, master):
+        self.old_y = None
+        self.old_x = None
         self.master = master
         self.master.title("WhiteBoard")
         self.master.resizable(False, False)
@@ -26,7 +29,7 @@ class WhiteBoard:
         self.canvas.configure(bg="black")
         self.canvas.pack()
 
-        # Create PIL canvas to use in pararell
+        # Create PIL canvas to use in parallel
         self.img_pil = Image.new("RGB", (WIDTH, HEIGHT), BLACK)
         self.cv_pil = ImageDraw.Draw(self.img_pil)
 
@@ -56,11 +59,11 @@ class WhiteBoard:
         for color, (style, command) in button_config.items():
             ttk.Button(self.button_frame, text=color.capitalize(),
                        command=command, style=style).pack(side="left", padx=5, pady=5)
-            
+
         # Initialize drawing variables
         self.draw_color = "white"
         self.line_width = 35
-        self.oldx, self.oldy = None, None
+        self.old_x, self.old_y = None, None
 
         # Add event listeners
         self.canvas.bind("<Button-1>", self.start_line)
@@ -76,9 +79,9 @@ class WhiteBoard:
             self.canvas.create_line(self.old_x, self.old_y, event.x, event.y,
                                     width=self.line_width, fill=self.draw_color,
                                     capstyle=tk.ROUND, smooth=tk.TRUE)
-            
+
             self.cv_pil.line((self.old_x, self.old_y, event.x, event.y),
-                      fill=self.draw_color, width=self.line_width)
+                             fill=self.draw_color, width=self.line_width)
             self.old_x, self.old_y = event.x, event.y
 
     # Update current drawing color
@@ -97,24 +100,23 @@ class WhiteBoard:
 
     def predict(self):
 
-        pred_dict = {0:"Clock",
-                     1:"Boomerang",
-                     2:"Airplane",
-                     3:"Snail",
-                     4:"Parachute",
-                     5:"Tree",
-                     6:"Fish",
-                     7:"Diamond",
-                     8:"Helicopter",
-                     9:"T-Shirt"}
+        pred_dict = {0: "Clock",
+                     1: "Boomerang",
+                     2: "Airplane",
+                     3: "Snail",
+                     4: "Parachute",
+                     5: "Tree",
+                     6: "Fish",
+                     7: "Diamond",
+                     8: "Helicopter",
+                     9: "T-Shirt"}
 
         np_img = preprocess_image()
         np_img = np_img.reshape(784)
         prediction, probabilities = make_prediction(np_img, convolutional=True)
-        
+
         print("Prediction: ", pred_dict[prediction.item()])
         print("Probabilities: ", probabilities)
-
 
 
 if __name__ == "__main__":
@@ -122,4 +124,3 @@ if __name__ == "__main__":
     root = tk.Tk()
     whiteboard = WhiteBoard(root)
     root.mainloop()
-

@@ -1,6 +1,7 @@
 from PIL import Image
 import numpy as np
 
+
 def preprocess_image():
     # Open image saved by board.py
     image = Image.open('user_image.jpg')
@@ -20,10 +21,10 @@ def preprocess_image():
     extra_brightness = 40
 
     # To remove imperfections produced by the image resizing
-    treshold = 30 + extra_brightness
+    threshold = 30 + extra_brightness
 
     # Convert the image to a numpy array and apply brightness and correction changes
-    temp = [min(255, x[0] + extra_brightness) if x[0] > treshold else 0 for y in temp for x in y]
+    temp = [min(255, x[0] + extra_brightness) if x[0] > threshold else 0 for y in temp for x in y]
     np_img = np.array(temp).reshape(28, 28)
 
     return np_img
