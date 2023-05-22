@@ -1,2 +1,5 @@
 # Machine_Learning
-Just me fiddling with Machine Learning
+
+***Juan Nicolás Sepúlveda Arias***
+***Juan Nicolás Quintero Quintero***
+
