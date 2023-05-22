@@ -24,3 +24,4 @@ La tarea de clasificación está descrita en el archivo 10-Class_Optimized_CIFAR
 
 Los demás archivos presentes en la carpeta del proyecto corresponden a la aplicación y a otros archivos de prueba. Si se desea utilizar la herramienta, los archivos necesarios son **board.py, predict.py** y **preprocess.py**. Para correrlo se debe ejecutar **board.py**. A continuación hay un par de imágenes que muestran el resultado obtenido.
 
+![Pez.png]{https://github.com/IamTrollFace555/ML_Project/blob/main/Fish.png}
