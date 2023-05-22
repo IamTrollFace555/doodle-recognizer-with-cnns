@@ -1,3 +1,4 @@
+import tkinter
 import tkinter as tk
 from tkinter import ttk
 from ttkbootstrap import Style
@@ -8,6 +9,7 @@ from predict import setup, make_prediction
 
 WIDTH = 800
 HEIGHT = 800
+RIGHT_SECTION = 400
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 
@@ -18,7 +20,7 @@ class WhiteBoard:
         self.old_y = None
         self.old_x = None
         self.master = master
-        self.master.geometry(f"{WIDTH + 300}x{HEIGHT}")
+        self.master.geometry(f"{WIDTH + RIGHT_SECTION}x{HEIGHT}")
         self.master.title("WhiteBoard")
         self.master.resizable(False, False)
 
@@ -42,9 +44,6 @@ class WhiteBoard:
         self.predictions_frame = ttk.Frame(self.master)
         self.predictions_frame.pack(side="left", padx=0, anchor="nw")
 
-        # Create labels for predictions
-        self.prediction_boxes = []
-
         # Categories dictionary
         self.pred_dict = {0: "Clock",
                           1: "Boomerang",
@@ -57,10 +56,22 @@ class WhiteBoard:
                           8: "Helicopter",
                           9: "T-Shirt"}
 
+        self.prediction_texts = []
+        self.prediction_labels = []
+
         for i in range(10):
-            temp = tk.Label(self.predictions_frame, text=f"{self.pred_dict[i]}")
+            s = tkinter.StringVar()
+            s.set(f"{self.pred_dict[i]}: 0.1%")
+            temp = tk.Label(self.predictions_frame, textvariable=s, font=("Lucida Sans Unicode", 25))
             temp.pack(side="top", pady=0, anchor="nw")
-            self.prediction_boxes.append(self)
+            self.prediction_texts.append(s)
+            self.prediction_labels.append(temp)
+        s = tkinter.StringVar()
+        s.set(f"\n\nPrediction: ")
+        temp = tk.Label(self.predictions_frame, textvariable=s, font=("Lucida Sans Unicode", 25))
+        temp.pack(side="top", pady=0, anchor="nw")
+        self.prediction_texts.append(s)
+        self.prediction_labels.append(temp)
 
         # # Button configuration
         # button_config = {
@@ -126,9 +137,15 @@ class WhiteBoard:
         np_img = preprocess_image()
         np_img = np_img.reshape(784)
         prediction, probabilities = make_prediction(np_img, convolutional=True)
+        probabilities = probabilities.numpy()
+        prediction = self.pred_dict[prediction.item()]
 
-        print("Prediction: ", self.pred_dict[prediction.item()])
+        print("Prediction: ", prediction)
         print("Probabilities: ", probabilities)
+
+        for idx, s in enumerate(self.prediction_texts[:-1]):
+            s.set(f"{self.pred_dict[idx]}: {probabilities[idx] * 100:.2f}%")
+        self.prediction_texts[-1].set(f"\n\nPrediction: {prediction}")
 
 
 if __name__ == "__main__":
@@ -136,4 +153,7 @@ if __name__ == "__main__":
     setup(convolutional=True)
     root = tk.Tk()
     whiteboard = WhiteBoard(root)
+    whiteboard.save_image()
+    whiteboard.clear_canvas()
+    whiteboard.predict()
     root.mainloop()
