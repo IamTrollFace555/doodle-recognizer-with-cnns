@@ -26,3 +26,6 @@ Los demás archivos presentes en la carpeta del proyecto corresponden a la aplic
 
 ![Pez.png](https://github.com/IamTrollFace555/ML_Project/blob/main/Fish.png)
 ![Tree.png](https://github.com/IamTrollFace555/ML_Project/blob/main/Tree.png)
+
+Debido a la forma en la que se están leyendo las imágenes y al escalamiento de las mismas, la predicción mejora entre más grande se realiza el dibujo, por lo que es preferible utilizar el máximo espacio posible en el tablero.
+
