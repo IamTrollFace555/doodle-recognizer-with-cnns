@@ -20,7 +20,7 @@ Nuestro modelo clasfica los dibujos del usuario en 10 clases las cuales son:
 
 Para este proyecto, en primera instancia se realizó un entrenamiento de la red, probando diferentes arquitecturas y formas de manejar los daros para ser capaces de entrenar la red con una mayor cantidad de datos. Posteriormente, el modelo generado se guarda y se carga para realizar las predicciones.
 
-La tarea de clasificación está descrita en el archivo 10-Class_Optimized_CIFAR-10_With_GPU.ipynb, junto con la comparación con un modelo preeliminar de menos clases realizado con una red neuronal convencional.
+La tarea de clasificación está descrita en el archivo 10-Class_Optimized_CIFAR-10_With_GPU.ipynb, incluyendo la base de datos de entrenamiento del modelo, una serie de resultados sobre el mismo dataset y la comparación con un modelo preeliminar de menos clases realizado con una red neuronal convencional.
 
 Los demás archivos presentes en la carpeta del proyecto corresponden a la aplicación y a otros archivos de prueba. Si se desea utilizar la herramienta, los archivos necesarios son **board.py, predict.py** y **preprocess.py**. Para correrlo se debe ejecutar **board.py**. El procedimiento que debe realizar el usuario debe ser dibujar la imagen y presionar los botones save y predict en ese orden para que se guarde la imagen y se realice la predicción sobre la misma. Si se desean realizar más dibujos se debe presionar el boton clear y repetir el proceso. A continuación hay un par de imágenes que muestran el resultado obtenido.
 
