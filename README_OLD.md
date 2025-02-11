@@ -24,8 +24,8 @@ La tarea de clasificación está descrita en el archivo 10-Class_Optimized_CIFAR
 
 Los demás archivos presentes en la carpeta del proyecto corresponden a la aplicación y a otros archivos de prueba. Si se desea utilizar la herramienta, los archivos necesarios son **board.py, predict.py** y **preprocess.py**. Para correrlo se debe ejecutar **board.py**. El procedimiento que debe realizar el usuario debe ser dibujar la imagen y presionar los botones save y predict en ese orden para que se guarde la imagen y se realice la predicción sobre la misma. Si se desean realizar más dibujos se debe presionar el boton clear y repetir el proceso. A continuación hay un par de imágenes que muestran el resultado obtenido.
 
-![Pez.png](https://github.com/IamTrollFace555/ML_Project/blob/main/Fish.png)
-![Tree.png](https://github.com/IamTrollFace555/ML_Project/blob/main/Tree.png)
+![media/Pez.png](https://github.com/IamTrollFace555/ML_Project/blob/main/Fish.png)
+![media/Tree.png](https://github.com/IamTrollFace555/ML_Project/blob/main/Tree.png)
 
 Debido a la forma en la que se están leyendo las imágenes y al escalamiento de las mismas, la predicción mejora entre más grande se realiza el dibujo, por lo que es preferible utilizar el máximo espacio posible en el tablero.
 
