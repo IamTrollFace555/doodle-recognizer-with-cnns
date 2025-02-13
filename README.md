@@ -129,7 +129,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ![instagram](https://github.com/CLorant/readme-social-icons/blob/main/small/colored/instagram.svg) [@juannicosepulveda](https://www.instagram.com/juannicosepulveda/)
 
-![gmail](https://github.com/CLorant/readme-social-icons/blob/main/small/colored/gmail.svg) jn.sepulveda55@gmail.com
+✉️ jn.sepulveda55@gmail.com
 
 ![linkedin](https://github.com/CLorant/readme-social-icons/blob/main/small/colored/linkedin.svg) www.linkedin.com/in/juannicosepulveda
 
