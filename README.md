@@ -14,11 +14,11 @@ This is a deep learning project that uses Convolutional Neural Networks (CNNs) t
 - Support for 10 sketch categories
 - Built-in data augmentation for improved robustness
 - Easy-to-use GUI
+- Web interface for testing and visualization
 - Comprehensive training pipeline
 
 Coming Soon: 
 
-- Web interface for testing and visualization (gradio)
 - Support for more categories
 
 
@@ -67,7 +67,7 @@ Once you run the command, you can check your [localhost:7860](http://localhost:7
 
 Once open, you can play with it by drawing anything from the 10 categories and click the `Analyze 🧠⚡` button.
 
-Here are some example drawings on the tool! ([See all](images-link))
+Here are some example drawings on the tool! ([See all](media/ui))
 
 #### Helicopter
 ![helicopter](media/ui/Helicopter.png)
@@ -105,7 +105,7 @@ which we selected the following ten:
 - Pillow
 - Gradio
 
-(See all on the [requirements.txt](file-link) file)
+(See all on the [requirements.txt](requirements.txt) file)
 
 ## 🤝 Contributing
 
@@ -129,13 +129,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ![instagram](https://github.com/CLorant/readme-social-icons/blob/main/small/colored/instagram.svg) [@juannicosepulveda](https://www.instagram.com/juannicosepulveda/)
 
-gmail logo jn.sepulveda55@gmail.com
+![gmail](https://github.com/CLorant/readme-social-icons/blob/main/small/colored/gmail.svg) jn.sepulveda55@gmail.com
 
-linkedin logo www.linkedin.com/in/juannicosepulveda
+![linkedin](https://github.com/CLorant/readme-social-icons/blob/main/small/colored/linkedin.svg) www.linkedin.com/in/juannicosepulveda
 
-
-
-
-
-Project Link: [https://github.com/yourusername/doodlenet](https://github.com/yourusername/doodlenet)
+Project Link: [https://github.com/IamTrollFace555/doodle-recognizer-with-cnns](https://github.com/IamTrollFace555/doodle-recognizer-with-cnns)
 
